@@ -27,7 +27,7 @@
 
         /* RESET & BASE */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; scroll-margin-top: 80px; }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Space Grotesk', sans-serif;
             background-color: var(--bg-sand);
@@ -35,6 +35,7 @@
             background-image: var(--grain);
             overflow-x: hidden;
             width: 100%;
+            padding-top: 70px; /* Space for fixed header */
         }
 
         h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; line-height: 0.9; text-transform: uppercase; }
@@ -53,23 +54,13 @@
             padding: 1rem 5%;
             border-bottom: 4px solid var(--amber);
         }
-        .nav-logo { font-size: 1.2rem; letter-spacing: 1px; font-weight: bold; white-space: nowrap; }
+        .nav-logo { font-size: 1.2rem; letter-spacing: 1px; font-weight: bold; }
         .nav-links { display: flex; gap: 15px; }
-        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.7rem; text-transform: uppercase; font-weight: 700; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; }
 
-        /* SECTIONS */
-        section { 
-            padding: 80px 5%; 
-            width: 100%; 
-            position: relative; 
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-            overflow: hidden;
-        }
-        .section-tag { background: var(--midnight); color: var(--white); display: inline-block; padding: 5px 12px; margin-bottom: 20px; font-weight: bold; font-size: 0.8rem; }
-
-        /* HERO */
+        /* HERO SECTION */
         #hero {
-            min-height: 100vh;
+            min-height: 90vh;
             background: var(--emerald);
             color: var(--bg-sand);
             display: flex;
@@ -77,92 +68,94 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding-top: 100px;
+            padding: 40px 20px;
         }
-        .hero-headline { font-size: clamp(3.5rem, 12vw, 9rem); margin-bottom: 20px; }
+        .hero-headline { font-size: clamp(3rem, 12vw, 9rem); margin-bottom: 10px; }
+        .hero-badge-container { margin-top: 20px; position: relative; display: inline-block; }
         .hero-badge {
             background: var(--rose); 
             color: var(--midnight);
-            padding: 15px 30px; 
-            font-size: clamp(0.8rem, 2vw, 1.5rem);
+            padding: 12px 25px; 
+            font-size: clamp(0.8rem, 2vw, 1.4rem);
             font-weight: 900; 
             box-shadow: 6px 6px 0px var(--midnight);
             letter-spacing: 1px;
-            display: block;
-            margin: 0 auto;
+            display: inline-block;
         }
 
-        /* GRIDS */
+        /* SECTION DEFAULTS */
+        section { padding: 80px 8%; width: 100%; border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .section-tag { background: var(--midnight); color: var(--white); display: inline-block; padding: 5px 12px; margin-bottom: 25px; font-weight: bold; font-size: 0.8rem; }
+
+        /* GRID SYSTEM */
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
-        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
 
         /* CARDS */
-        .card { background: var(--white); padding: 30px; border: 3px solid var(--midnight); box-shadow: 10px 10px 0px var(--amber); height: 100%; }
+        .card { background: var(--white); padding: 40px; border: 3px solid var(--midnight); box-shadow: 12px 12px 0px var(--amber); height: 100%; position: relative; }
 
         /* RAYE SECTION */
         #raye { background: var(--midnight); color: white; border-bottom: 10px solid var(--rose); }
-        .raye-status { border: 2px solid var(--amber); padding: 25px; text-align: center; margin-top: 20px; }
+        .status-box { border: 2px solid var(--amber); padding: 30px; text-align: center; background: rgba(255,255,255,0.05); }
 
         /* DATA SECTION */
-        .chart-container {
+        .chart-wrap {
             background: var(--midnight);
-            padding: 30px;
+            padding: 40px;
             border: 4px solid var(--rose);
             box-shadow: 15px 15px 0px var(--amber);
-            height: 350px;
+            height: 400px;
             position: relative;
         }
 
-        /* HUSBAND INITIATIVE */
-        #husband-initiative { background: var(--white); text-align: center; border-bottom: 10px solid var(--midnight); }
-        .husband-quote { font-size: clamp(2.5rem, 6vw, 5rem); color: var(--emerald); margin-bottom: 30px; }
+        /* HUSBAND INITIATIVE - CUSTOM TEXT */
+        #husband-initiative { background: #F2F2F2; text-align: left; }
+        .husband-title { font-size: clamp(2.5rem, 5vw, 5rem); color: var(--emerald); margin-bottom: 40px; text-align: center; }
+        .initiative-card h3 { color: var(--rose); font-size: 1.8rem; margin-bottom: 15px; border-bottom: 2px solid var(--amber); display: inline-block; padding-bottom: 5px; }
 
         /* VOTE PAGE */
         #voting-page { 
             display: none; 
-            position: fixed; 
-            top: 0; left: 0; 
-            width: 100%; height: 100%; 
-            background: var(--amber); 
-            z-index: 10000; 
-            overflow-y: auto;
-            padding: 50px 5%;
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: var(--amber); z-index: 10000; overflow-y: auto; padding: 60px 5%;
         }
         .ballot {
-            max-width: 600px; margin: 0 auto; background: var(--bg-sand);
-            border: 10px double var(--midnight); padding: 30px;
-            box-shadow: 15px 15px 0px var(--rose);
+            max-width: 650px; margin: 0 auto; background: var(--bg-sand);
+            border: 10px double var(--midnight); padding: 40px;
+            box-shadow: 20px 20px 0px var(--rose);
         }
         .ballot-option {
-            margin: 15px 0; padding: 15px; border: 2px solid var(--midnight);
-            cursor: pointer; transition: 0.2s; font-weight: bold;
+            margin: 15px 0; padding: 18px; border: 2.5px solid var(--midnight);
+            cursor: pointer; transition: 0.3s; font-weight: bold; font-size: 1.1rem;
         }
+        .ballot-option:hover { background: #ffeaec; }
         .ballot-option.selected { background: var(--emerald); color: white; }
 
         /* BUTTONS */
-        .btn {
+        .btn-main {
             background: var(--midnight); color: white; font-family: 'Bebas Neue';
-            font-size: 2rem; padding: 15px 40px; border: none;
-            cursor: pointer; box-shadow: 6px 6px 0px var(--rose);
-            text-decoration: none; display: inline-block;
+            font-size: 2.2rem; padding: 15px 50px; border: none; cursor: pointer;
+            box-shadow: 8px 8px 0px var(--rose); transition: 0.2s;
         }
+        .btn-main:hover { transform: translate(-4px, -4px); box-shadow: 12px 12px 0px var(--rose); }
 
         /* VICTORY */
-        #victory-message { display: none; text-align: center; padding: 100px 5%; min-height: 100vh; }
+        #victory-message { display: none; text-align: center; padding: 120px 5%; min-height: 100vh; background: var(--bg-sand); }
 
         /* ICONS */
-        .icon-svg { width: 45px; height: 45px; fill: var(--emerald); margin-bottom: 15px; }
+        .icon-svg { width: 50px; height: 50px; fill: var(--emerald); margin-bottom: 20px; }
 
-        /* MOBILE RESPONSIVE */
+        /* MOBILE OVERRIDES */
         @media (max-width: 850px) {
             .grid-2 { grid-template-columns: 1fr; }
             .nav-links { display: none; }
-            .hero-headline { font-size: 4rem; }
+            .hero-headline { font-size: 3.5rem; }
             section { padding: 60px 20px; }
-            .chart-container { height: 300px; }
+            .chart-wrap { height: 300px; }
+            .husband-title { font-size: 2.5rem; }
         }
 
-        footer { background: #000; color: #fff; padding: 40px; text-align: center; font-size: 0.8rem; }
+        footer { background: #000; color: #fff; padding: 50px; text-align: center; font-size: 0.8rem; letter-spacing: 1px; }
     </style>
 </head>
 <body>
@@ -170,11 +163,11 @@
     <nav>
         <div class="nav-logo">NIV FOR AARADHYA 2026</div>
         <div class="nav-links">
-            <a href="#vision">Vision</a>
-            <a href="#raye">RAYE Inquiry</a>
-            <a href="#data">Data</a>
+            <a href="#vision">The Vision</a>
+            <a href="#raye">The Inquiry</a>
             <a href="#husband-initiative">The Pledge</a>
-            <a href="javascript:void(0)" onclick="showVotingPage()" style="background:var(--amber); color:var(--midnight); padding: 5px 10px;">VOTE</a>
+            <a href="#platform">Policies</a>
+            <a href="javascript:void(0)" onclick="showVotingPage()" style="background:var(--amber); color:var(--midnight); padding: 5px 12px;">VOTE NOW</a>
         </div>
     </nav>
 
@@ -182,174 +175,179 @@
         <!-- HERO -->
         <section id="hero">
             <h1 class="hero-headline">A WOMAN WORTH<br>CAMPAIGNING FOR</h1>
-            <div class="hero-badge">THE NIV-AARADHYA FUTURE | 8 MONTHS IN</div>
-            <p class="serif-italic" style="margin-top: 40px; font-size: clamp(1.2rem, 3vw, 1.8rem);">"Distance is a number. Love is a mandate."</p>
+            <div class="hero-badge-container">
+                <div class="hero-badge">THE NIV-AARADHYA FUTURE | 8 MONTHS IN</div>
+            </div>
+            <p class="serif-italic" style="margin-top: 40px; font-size: clamp(1.2rem, 3vw, 2rem);">"8 Months of Qualitative Excellence and Digital Devotion."</p>
         </section>
 
         <!-- VISION -->
         <section id="vision">
-            <span class="section-tag">STATE OF THE UNION</span>
+            <span class="section-tag">CAMPAIGN MANIFESTO</span>
             <div class="grid-2">
                 <div>
-                    <h2 style="font-size: 3rem; margin-bottom: 20px;">8 Months of Excellence</h2>
-                    <p style="font-size: 1.1rem; line-height: 1.7; margin-bottom: 20px;">
-                        Citizens, the data is conclusive. Aaradhya's <strong>Biology Brilliance</strong> and <strong>Witty Intelligence</strong> have outperformed every projected metric. We are operating at a 100% Approval Rating.
+                    <h2 style="font-size: 3.5rem; margin-bottom: 20px;">The State of Our Connection</h2>
+                    <p style="font-size: 1.15rem; line-height: 1.8; margin-bottom: 20px;">
+                        Citizens, the first 8 months of this union have established a world-class precedent. Aaradhya's <strong>Biology Brilliance</strong> and <strong>Witty Intelligence</strong> have outperformed every projected metric of excellence.
                     </p>
-                    <p style="font-size: 1.1rem; line-height: 1.7;">
-                        While the 2083.14 km gap attempts to veto our progress, our administration remains firm. We are closing the gap with every call.
+                    <p style="font-size: 1.15rem; line-height: 1.8;">
+                        While the <strong>2083.14 KM</strong> distance acts as the opposition, our administration remains firm. We do not recognize geography as a valid hurdle. We recognize only the voice, the wit, and the future.
                     </p>
                 </div>
-                <div class="card" style="text-align: center; background: var(--amber);">
-                    <h3 style="font-size: 2rem;">VOTER CERTAINTY</h3>
-                    <h2 style="font-size: 7rem; color: var(--midnight);">100%</h2>
-                    <p style="font-weight: bold; border-top: 2px solid var(--midnight); padding-top: 10px;">SOURCE: NIV'S HEART</p>
+                <div class="card" style="text-align: center; background: var(--amber); border: 5px solid var(--midnight);">
+                    <h3 style="font-size: 2.2rem;">CAMPAIGN APPROVAL</h3>
+                    <h2 style="font-size: 8rem; color: var(--midnight);">100%</h2>
+                    <p style="font-weight: bold; border-top: 2px solid var(--midnight); display: inline-block; padding-top: 10px;">SOURCE: NIV'S ENTIRE SOUL</p>
                 </div>
             </div>
         </section>
 
         <!-- RAYE INQUIRY -->
         <section id="raye">
-            <span class="section-tag" style="background: var(--rose);">URGENT: 2025 CULTURAL INQUIRY</span>
+            <span class="section-tag" style="background: var(--rose);">OFFICIAL RESPONSE: RAYE 2025</span>
             <div class="grid-2">
                 <div>
-                    <h2 style="font-size: 3.5rem; color: var(--amber); margin-bottom: 15px;">Addressing RAYE's Question</h2>
-                    <p class="serif-italic" style="font-size: 1.8rem; margin-bottom: 20px; line-height: 1.2;">"Where is my husband? Where is he hiding from me?"</p>
-                    <p style="opacity: 0.9; line-height: 1.6;">
-                        In 2025, the artist RAYE asked the world. This campaign provides the official answer: <strong>He isn't hiding.</strong> He is currently 2083.14 km away, campaigning daily for the honor of the title.
+                    <h2 style="font-size: 3.8rem; color: var(--amber); margin-bottom: 20px;">Addressing the Inquiry</h2>
+                    <p class="serif-italic" style="font-size: 2rem; margin-bottom: 25px; line-height: 1.2;">"Where is my husband? Where is he hiding from me?"</p>
+                    <p style="opacity: 0.9; line-height: 1.7; font-size: 1.1rem;">
+                        In 2025, the cultural analyst RAYE posed a vital question. This campaign provides the data: <strong>The candidate is not hiding.</strong> He is currently 2083.14 km away, undergoing rigorous training to meet the standard of Aaradhya’s excellence.
                     </p>
                 </div>
-                <div class="raye-status">
-                    <h3 style="color: var(--rose);">HUSBAND STATUS:</h3>
-                    <h1 style="font-size: 3rem; margin: 10px 0;">LOCATED</h1>
-                    <p>Current Mission: Closing 2083.14 KM</p>
-                    <p style="color: var(--amber); font-weight: bold; margin-top: 10px;">ETR: FOREVER</p>
+                <div class="status-box">
+                    <h3 style="color: var(--rose); margin-bottom: 10px;">HUSBAND LOCATED</h3>
+                    <h1 style="font-size: 3.5rem;">POSITION: NIV</h1>
+                    <p style="margin: 15px 0;">STATUS: CAMPAIGNING IN PERPETUITY</p>
+                    <p style="color: var(--amber); font-weight: bold; font-size: 1.2rem;">DESTINATION: AARADHYA'S HEART</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- HUSBAND INITIATIVE - THE NEW STUFF -->
+        <section id="husband-initiative">
+            <span class="section-tag">THE HUSBAND PLEDGE</span>
+            <h1 class="husband-title">"If I was your husband..."</h1>
+            <div class="grid-2" style="margin-bottom: 30px;">
+                <div class="card initiative-card">
+                    <h3>THE LAUGH ARCHIVE INITIATIVE</h3>
+                    <p style="line-height: 1.8;">I would collect every version of your laugh - the surprised one, the tired one, the one that means you think I’m ridiculous. I’d build a library. Future historians would study how one person’s joy became someone else’s entire reason.</p>
+                </div>
+                <div class="card initiative-card">
+                    <h3>THE NO-SMALL-MOMENT POLICY</h3>
+                    <p style="line-height: 1.8;">I would treat every text, every voice note, every call like it matters. Because it does. We don’t get coffee dates and hand-holding yet. So these digital breadcrumbs? They’re everything. I’d never take them for granted.</p>
+                </div>
+            </div>
+            <div class="card" style="border-color: var(--emerald); text-align: center; box-shadow: 12px 12px 0px var(--emerald);">
+                <h3 style="color: var(--emerald);">THE ZERO-DISTANCE MANDATE</h3>
+                <p style="font-size: 1.3rem; margin-top: 10px;">I would ensure that 2083.14km is reduced to 0.00cm. No more hiding. No more distance. Just the intelligence, the brilliance, and the life we’re building.</p>
             </div>
         </section>
 
         <!-- DATA SECTION -->
         <section id="data">
-            <span class="section-tag">ANALYTICS & PROBABILITY</span>
+            <span class="section-tag">ANALYTICS & DATA</span>
             <div class="grid-2">
-                <div class="card" style="background: #f1f1f1;">
-                    <h3 style="color: var(--rose); margin-bottom: 15px;">Opposition Report</h3>
-                    <p><strong>Threat:</strong> 2083.14 Kilometers</p>
-                    <p><strong>Status:</strong> Being dismantled by 4-hour calls.</p>
-                    <hr style="margin: 15px 0;">
-                    <p class="serif-italic">"Geography is a temporary administrative error."</p>
-                </div>
-                <div class="chart-container">
-                    <h3 style="color: white; text-align: center; font-size: 1.2rem; margin-bottom: 20px;">Probability of Happiness Multiplier</h3>
+                <div class="chart-wrap">
+                    <h3 style="color: white; text-align: center; margin-bottom: 20px;">SMILE PROBABILITY MULTIPLIER</h3>
                     <canvas id="happinessChart"></canvas>
                 </div>
-            </div>
-        </section>
-
-        <!-- HUSBAND INITIATIVE -->
-        <section id="husband-initiative">
-            <span class="section-tag">THE PLEDGE</span>
-            <h1 class="husband-quote">"IF I WAS YOUR HUSBAND..."</h1>
-            <div class="grid-3">
-                <div class="card">
-                    <h3 style="color: var(--rose);">THE SUPPORT</h3>
-                    <p>I would be the backbone of your resilience and the biggest fan of your brilliant mind.</p>
-                </div>
-                <div class="card">
-                    <h3 style="color: var(--rose);">THE ATTENTION</h3>
-                    <p>I would listen to every scientific fact and lipstick tutorial like it was the most important news on earth.</p>
-                </div>
-                <div class="card">
-                    <h3 style="color: var(--rose);">THE ZERO-DISTANCE</h3>
-                    <p>I would make sure 2083.14km becomes 0km. No more hiding, no more distance. Just us.</p>
+                <div class="card" style="background: #efefef; border-style: dashed;">
+                    <h3 style="color: var(--rose); margin-bottom: 15px;">OPPOSITION AUDIT</h3>
+                    <p><strong>Threat Level:</strong> 2083.14 Kilometers</p>
+                    <p><strong>Defense Strategy:</strong> High-frequency calling & absolute devotion.</p>
+                    <hr style="margin: 20px 0; border: 1px dashed var(--midnight);">
+                    <p class="serif-italic" style="font-size: 1.2rem;">"The distance is a temporary geographical error. The love is a permanent legislative victory."</p>
                 </div>
             </div>
         </section>
 
         <!-- PLATFORM -->
         <section id="platform">
-            <span class="section-tag">LEGISLATION</span>
-            <h2 style="font-size: 3rem; margin-bottom: 30px;">Strategic Policies</h2>
+            <span class="section-tag">THE 2026 PLATFORM</span>
+            <h2 style="font-size: 3.5rem; margin-bottom: 30px;">Strategic Policies</h2>
             <div class="grid-3">
                 <div class="card">
-                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12,2L4.5,20.29L5.21,21L12,18L18.79,21L19.5,20.29L12,2Z" /></svg>
-                    <h3>Biology Passion Fund</h3>
-                    <p>Unlimited support for academic discussions and scientific curiosity.</p>
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,11A1,1 0 0,1 13,12A1,1 0 0,1 12,13A1,1 0 0,1 11,12A1,1 0 0,1 12,11M12,7A1,1 0 0,1 13,8A1,1 0 0,1 12,9A1,1 0 0,1 11,8A1,1 0 0,1 12,7M12,15A1,1 0 0,1 13,16A1,1 0 0,1 12,17A1,1 0 0,1 11,16A1,1 0 0,1 12,15Z" /></svg>
+                    <h3>Biology Brilliance Fund</h3>
+                    <p>Guaranteed 100% funding and attention for all scientific lectures and biology passion projects shared by the candidate.</p>
                 </div>
                 <div class="card">
-                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12,1L9,5H11V14H13V5H15L12,1M18,17V15H6V17L3,20V23H21V20L18,17Z" /></svg>
-                    <h3>Witty Banter Protocol</h3>
-                    <p>Protecting her intelligent wit and fast-paced brilliance at all costs.</p>
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M21,11H6.83L10.41,7.41L9,6L3,12L9,18L10.41,16.58L6.83,13H21V11Z" /></svg>
+                    <h3>Lipstick Tutorial Mandate</h3>
+                    <p>Formalizing the "First this, then that" beauty routine observation protocol. Every step is recognized as vital data.</p>
                 </div>
                 <div class="card">
                     <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" /></svg>
-                    <h3>The 8-Month Accord</h3>
-                    <p>Celebrating the foundational era of the most successful relationship in history.</p>
+                    <h3>The "I Like You" Legacy</h3>
+                    <p>Preserving the memory of the pre-official era where we established the foundation for the forever we’re building.</p>
                 </div>
             </div>
         </section>
 
         <!-- CTA -->
         <section style="text-align: center; background: var(--midnight); color: white;">
-            <h2 style="font-size: 4rem; margin-bottom: 20px;">VOTE FOR THE FUTURE</h2>
-            <p class="serif-italic" style="font-size: 1.8rem; margin-bottom: 40px;">"Will you elect Niv as your Husband 2026?"</p>
-            <button class="btn" onclick="showVotingPage()">OPEN BALLOT</button>
+            <h2 style="font-size: 4rem; margin-bottom: 25px;">THE BALLOT IS OPEN</h2>
+            <p class="serif-italic" style="font-size: 2rem; margin-bottom: 45px;">"A Woman Worth Campaigning For. A Future Worth Everything."</p>
+            <button class="btn-main" onclick="showVotingPage()">CAST YOUR VOTE</button>
         </section>
 
         <footer>
             <p>NIV FOR AARADHYA 2026 | 8 MONTHS OF EXCELLENCE</p>
-            <p>© 2026 ADDRESSING THE "WHERE IS MY HUSBAND?" INQUIRY SINCE DAY ONE.</p>
+            <p>© 2026 ADDRESSING THE "WHERE IS MY HUSBAND?" INQUIRY WITH ACTION.</p>
         </footer>
     </div>
 
     <!-- VOTING PAGE -->
     <div id="voting-page">
         <div class="ballot">
-            <div style="text-align: center; border-bottom: 2px solid #000; margin-bottom: 20px; padding-bottom: 10px;">
-                <h1 style="color: var(--midnight);">OFFICIAL BALLOT: 2026</h1>
-                <p>CONSTITUENCY: NIV & AARADHYA</p>
+            <div style="text-align: center; border-bottom: 2px solid #000; margin-bottom: 25px; padding-bottom: 15px;">
+                <h1>OFFICIAL CAMPAIGN BALLOT</h1>
+                <p>NIV-AARADHYA ADMINISTRATION | 2026</p>
             </div>
             
             <p><strong>1. Who is the most intelligent and brilliant woman?</strong></p>
             <div class="ballot-option" onclick="this.classList.toggle('selected')">AARADHYA</div>
             
             <p><strong>2. Should Niv be granted the title of Husband?</strong></p>
-            <div class="ballot-option" onclick="this.classList.toggle('selected')">YES (IN ACCORDANCE WITH RAYE 2025)</div>
+            <div class="ballot-option" onclick="this.classList.toggle('selected')">YES (ACCORDING TO RAYE 2025)</div>
             
-            <p><strong>3. Priority status for 2083.14 KM?</strong></p>
+            <p><strong>3. Priority status for the 2083.14 KM Distance?</strong></p>
             <div class="ballot-option" onclick="this.classList.toggle('selected')">IMMEDIATE DESTRUCTION</div>
 
-            <p><strong>4. Is 8 months just the beginning?</strong></p>
+            <p><strong>4. Is 8 months just the beginning of our story?</strong></p>
             <div class="ballot-option" onclick="this.classList.toggle('selected')">I DO</div>
 
-            <button class="btn" style="width: 100%; margin-top: 20px;" onclick="submitVote()">SUBMIT VOTE</button>
+            <button class="btn-main" style="width: 100%; margin-top: 25px; box-shadow: none;" onclick="submitVote()">SUBMIT VOTE</button>
         </div>
     </div>
 
-    <!-- VICTORY -->
+    <!-- VICTORY MESSAGE -->
     <div id="victory-message">
         <h1 style="font-size: 6rem; color: var(--emerald);">LANDSLIDE VICTORY!</h1>
-        <div style="background: var(--rose); color: var(--midnight); padding: 15px; font-weight: bold; display: inline-block; margin: 20px 0;">
+        <div style="background: var(--rose); color: var(--midnight); padding: 15px 30px; font-weight: 900; display: inline-block; margin: 30px 0; font-size: 1.5rem; box-shadow: 6px 6px 0px var(--midnight);">
             ELECTION CALLED: NIV WINS AARADHYA'S HEART
         </div>
-        <p class="serif-italic" style="font-size: 2.2rem; max-width: 800px; margin: 0 auto;">
+        <p class="serif-italic" style="font-size: 2.2rem; max-width: 800px; margin: 0 auto; line-height: 1.4;">
             "Thank you for voting. To the woman worth campaigning for: I love you more than 2083.14 km can describe. Happy 8 months."
         </p>
         <br><br>
-        <button class="btn" onclick="location.reload()">RETURN TO HQ</button>
+        <button class="btn-main" onclick="location.reload()">RETURN TO CAMPAIGN HQ</button>
     </div>
 
     <script>
-        // Fix Chart.js Height and Rendering
+        // Chart.js Configuration
         const ctx = document.getElementById('happinessChart').getContext('2d');
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['NORMAL LIFE', 'WITH HER VOICE'],
+                labels: ['NORMAL LIFE', 'HEARING HER VOICE'],
                 datasets: [{
+                    label: 'Mood Level',
                     data: [5, 100],
                     backgroundColor: ['#475569', '#FB7185'],
                     borderColor: '#FFFFFF',
-                    borderWidth: 3
+                    borderWidth: 3,
+                    borderRadius: 0,
+                    barPercentage: 0.6
                 }]
             },
             options: {
@@ -373,18 +371,18 @@
 
         function submitVote() {
             if(document.querySelectorAll('.selected').length < 1) {
-                alert("Please select your choices!");
+                alert("Please select your choices before submitting!");
                 return;
             }
             document.getElementById('voting-page').style.display = 'none';
             document.getElementById('main-content').style.display = 'none';
             document.getElementById('victory-message').style.display = 'block';
             
-            // Confetti
+            // Victory Confetti
             var end = Date.now() + (5 * 1000);
             (function frame() {
-              confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#FB7185', '#F59E0B'] });
-              confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#FB7185', '#F59E0B'] });
+              confetti({ particleCount: 3, angle: 60, spread: 55, origin: { x: 0 }, colors: ['#FB7185', '#F59E0B', '#064E3B'] });
+              confetti({ particleCount: 3, angle: 120, spread: 55, origin: { x: 1 }, colors: ['#FB7185', '#F59E0B', '#064E3B'] });
               if (Date.now() < end) { requestAnimationFrame(frame); }
             }());
         }
