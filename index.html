@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aaradhya 2026 | A Woman Worth Campaigning For</title>
+    
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;500;700&family=Fraunces:ital,opsz,wght@1,700&display=swap" rel="stylesheet">
+    
+    <!-- CHART JS & CONFETTI -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <style>
+        :root {
+            --bg-sand: #FDFBF7;
+            --emerald: #064E3B;
+            --amber: #F59E0B;
+            --rose: #FB7185;
+            --midnight: #1E1B4B;
+            --white: #FFFFFF;
+            --grain: url('https://www.transparenttextures.com/patterns/p6.png');
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background-color: var(--bg-sand);
+            color: var(--midnight);
+            overflow-x: hidden;
+            background-image: var(--grain);
+            padding-top: 60px; /* Space for fixed header */
+            scroll-behavior: smooth;
+        }
+
+        h1, h2, h3 { font-family: 'Bebas Neue', sans-serif; line-height: 0.85; text-transform: uppercase; }
+        .serif-italic { font-family: 'Fraunces', serif; font-style: italic; text-transform: none; }
+
+        /* FIXED HEADER */
+        nav {
+            position: fixed;
+            top: 0; width: 100%;
+            background: var(--midnight);
+            color: var(--white);
+            z-index: 9999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 5%;
+            border-bottom: 4px solid var(--amber);
+        }
+
+        .nav-logo { font-size: 1.4rem; letter-spacing: 1px; font-weight: bold; }
+        .nav-links { display: flex; gap: 15px; }
+        .nav-links a { color: var(--white); text-decoration: none; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; }
+
+        /* HERO SECTION */
+        #hero {
+            min-height: 90vh;
+            background: var(--emerald);
+            color: var(--bg-sand);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-headline { font-size: clamp(3.5rem, 12vw, 10rem); }
+        .hero-badge {
+            background: var(--rose); color: var(--midnight);
+            padding: 10px 25px; font-size: clamp(1rem, 2.5vw, 2rem);
+            font-weight: 900; transform: rotate(-2deg);
+            margin-top: -10px; box-shadow: 6px 6px 0px var(--midnight);
+        }
+
+        /* SECTION STYLING */
+        section { padding: 80px 8%; border-bottom: 1px solid rgba(0,0,0,0.1); }
+        .section-tag { background: var(--midnight); color: var(--white); display: inline-block; padding: 5px 12px; margin-bottom: 20px; font-weight: bold; }
+
+        /* GRID SYSTEM */
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+        @media (max-width: 850px) { .grid-2 { grid-template-columns: 1fr; } .nav-links { display: none; } }
+
+        /* CARDS */
+        .card { background: var(--white); padding: 30px; border: 3px solid var(--midnight); box-shadow: 10px 10px 0px var(--amber); }
+
+        /* OPPOSITION RESEARCH */
+        .opposition-box { background: #f1f1f1; border: 4px solid var(--midnight); padding: 30px; }
+        .red-stamp { color: var(--rose); border: 4px solid var(--rose); padding: 5px 15px; display: inline-block; transform: rotate(-10deg); font-weight: bold; margin-bottom: 10px; }
+
+        /* VOLUNTEER SECTION */
+        .volunteer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
+        .v-card { text-align: center; background: var(--midnight); color: var(--white); padding: 20px; }
+
+        /* VOTE PAGE STYLES */
+        #voting-page { background: var(--amber); display: none; padding: 100px 5%; min-height: 100vh; }
+        .ballot {
+            max-width: 600px; margin: 0 auto; background: var(--bg-sand);
+            border: 10px double var(--midnight); padding: 40px;
+            box-shadow: 20px 20px 0px var(--rose);
+        }
+        .ballot-option {
+            margin: 20px 0; padding: 15px; border: 2px solid var(--midnight);
+            cursor: pointer; transition: 0.3s; font-weight: bold;
+        }
+        .ballot-option:hover { background: var(--soft-rose); }
+        .ballot-option.selected { background: var(--emerald); color: white; }
+
+        .vote-now-btn {
+            background: var(--amber); font-family: 'Bebas Neue';
+            font-size: 2.5rem; padding: 20px 50px; border: none;
+            cursor: pointer; box-shadow: 8px 8px 0px var(--rose);
+        }
+
+        /* VICTORY MESSAGE */
+        #victory-message { display: none; text-align: center; padding: 100px 5%; }
+
+        footer { background: #000; color: #fff; padding: 40px; text-align: center; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">NIV FOR AARADHYA 2026</div>
+        <div class="nav-links">
+            <a href="#vision">Vision</a>
+            <a href="#oppo">Opposition</a>
+            <a href="#platform">Platform</a>
+            <a href="#volunteer">Volunteer</a>
+            <a href="javascript:void(0)" onclick="showVotingPage()" style="background:var(--amber); color:var(--midnight); padding: 5px 10px;">VOTE NOW</a>
+        </div>
+    </nav>
+
+    <div id="main-content">
+        <!-- HERO -->
+        <section id="hero">
+            <h1 class="hero-headline">A WOMAN WORTH<br>CAMPAIGNING FOR</h1>
+            <div class="hero-badge">THE NIV-AARADHYA FUTURE | 8 MONTHS IN</div>
+            <p class="serif-italic" style="margin-top: 30px; font-size: 1.5rem;">"The Data is Clear: She is Everything."</p>
+        </section>
+
+        <!-- VISION -->
+        <section id="vision">
+            <span class="section-tag">OFFICIAL STATEMENT</span>
+            <div class="grid-2">
+                <div>
+                    <h2 style="font-size: 3.5rem; margin-bottom: 20px;">The State of our Union</h2>
+                    <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
+                        Citizens, the first 8 months of this relationship have seen <strong>record-breaking happiness indices.</strong> Aaradhya's leadership in the fields of kindness, resilience, and witty coffee-fueled banter has made this the most successful administration in history.
+                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.8;">
+                        We are running on a platform of <strong>Zero Regrets.</strong> While our opponents (the 2,000 miles) attempt to block our progress, we are moving forward with daily calls and a commitment to closing the distance permanently.
+                    </p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <h3 style="font-size: 2.5rem;">APPROVAL RATING</h3>
+                    <h2 style="font-size: 8rem; color: var(--emerald);">100%</h2>
+                    <p style="font-weight: bold;">Margin of error: 0.0%</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- OPPOSITION RESEARCH (NEW) -->
+        <section id="oppo" style="background: #eee;">
+            <span class="section-tag">OPPOSITION RESEARCH</span>
+            <h2 style="font-size: 3rem; margin-bottom: 30px;">Know Thy Enemy: The Distance</h2>
+            <div class="grid-2">
+                <div class="opposition-box">
+                    <div class="red-stamp">THREAT DETECTED</div>
+                    <h3>Target: 2,000+ Miles</h3>
+                    <ul style="margin-top: 15px; line-height: 2;">
+                        <li><strong>Weakness:</strong> Cannot stop a FaceTime call.</li>
+                        <li><strong>Weakness:</strong> Vulnerable to flight bookings.</li>
+                        <li><strong>Weakness:</strong> No match for her resilience.</li>
+                    </ul>
+                    <p style="margin-top: 20px; font-style: italic;">"Geography tried to stop us. Geography is losing."</p>
+                </div>
+                <div>
+                    <canvas id="oppoChart" height="200"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLATFORM -->
+        <section id="platform">
+            <span class="section-tag">THE 2026 PLATFORM</span>
+            <h2 style="font-size: 3rem; margin-bottom: 30px;">Strategic Initiatives</h2>
+            <div class="volunteer-grid">
+                <div class="card">
+                    <h3>Lipstick Tutorial Support</h3>
+                    <p>National funding for step-by-step beauty routine consultations. "First this, then that."</p>
+                </div>
+                <div class="card">
+                    <h3>Bio-Science Enthusiasm</h3>
+                    <p>A commitment to 110% engagement during all biology-related lectures and academic passions.</p>
+                </div>
+                <div class="card">
+                    <h3>Lorelai Gilmore Banter</h3>
+                    <p>Codifying fast-talking, coffee-addicted intelligence as a relationship requirement.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- VOLUNTEER (NEW) -->
+        <section id="volunteer">
+            <span class="section-tag">VOLUNTEER HQ</span>
+            <h2 style="font-size: 3.5rem; margin-bottom: 30px;">How to Support the Campaign</h2>
+            <div class="volunteer-grid">
+                <div class="v-card">
+                    <h1 style="font-size: 3rem;">📞</h1>
+                    <h3>PHONE CANVASSING</h3>
+                    <p>Talking to Aaradhya for 4+ hours at a time.</p>
+                </div>
+                <div class="v-card" style="background: var(--rose);">
+                    <h1 style="font-size: 3rem;">💬</h1>
+                    <h3>DIGITAL OUTREACH</h3>
+                    <p>Sending "I like you so much" texts every hour.</p>
+                </div>
+                <div class="v-card" style="background: var(--amber); color: var(--midnight);">
+                    <h1 style="font-size: 3rem;">☕</h1>
+                    <h3>COFFEE LOGISTICS</h3>
+                    <p>Ensuring the candidate remains sufficiently caffeinated.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PRE-VOTE CTA -->
+        <section style="text-align: center; background: var(--midnight); color: white;">
+            <h2 style="font-size: 4rem;">READY TO VOTE?</h2>
+            <p class="serif-italic" style="font-size: 1.5rem; margin-bottom: 30px;">Your voice matters. Her heart is the ballot.</p>
+            <button class="vote-now-btn" onclick="showVotingPage()">ACCESS OFFICIAL BALLOT</button>
+        </section>
+
+        <footer>
+            <p>NIV FOR AARADHYA 2026 | 8 MONTHS OF EXCELLENCE</p>
+            <p>© 2026 THE LONG-DISTANCE-TO-FOREVER PIPELINE.</p>
+        </footer>
+    </div>
+
+    <!-- VOTING PAGE (HIDDEN BY DEFAULT) -->
+    <div id="voting-page">
+        <div class="ballot">
+            <div style="text-align: center; border-bottom: 2px solid #000; margin-bottom: 20px; padding-bottom: 10px;">
+                <h1>OFFICIAL CAMPAIGN BALLOT</h1>
+                <p>ELECTION YEAR 2026 | CONSTITUENCY: OUR FUTURE</p>
+            </div>
+            
+            <p><strong>1. Who is the most kind, resilient, and beautiful woman worth campaigning for?</strong></p>
+            <div class="ballot-option" onclick="selectOption(this)">AARADHYA (The Only Logical Choice)</div>
+            
+            <p><strong>2. Should Niv be appointed as Husband for a term length of "Forever"?</strong></p>
+            <div class="ballot-option" onclick="selectOption(this)">YES (Highly Recommended)</div>
+            
+            <p><strong>3. Priority level for closing the 2,000+ mile distance?</strong></p>
+            <div class="ballot-option" onclick="selectOption(this)">IMMEDIATE / TOP PRIORITY</div>
+
+            <p><strong>4. Will you accept these 8 months as just the beginning of our story?</strong></p>
+            <div class="ballot-option" onclick="selectOption(this)">I DO / YES</div>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <button class="vote-now-btn" style="font-size: 1.5rem; width: 100%;" onclick="submitVote()">SUBMIT OFFICIAL BALLOT</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- VICTORY MESSAGE (HIDDEN) -->
+    <div id="victory-message">
+        <h1 style="font-size: 6rem; color: var(--emerald);">LANDSLIDE VICTORY!</h1>
+        <div class="hero-badge" style="display: inline-block; transform: rotate(0deg); margin: 20px 0;">ELECTION CALLED: NIV WINS AARADHYA'S HEART</div>
+        <p class="serif-italic" style="font-size: 2rem; max-width: 800px; margin: 0 auto;">"Thank you for voting for us. Here's to 8 months, the next 8 years, and the forever we're building. I love you so much."</p>
+        <br>
+        <button class="vote-now-btn" onclick="location.reload()">BACK TO CAMPAIGN HQ</button>
+    </div>
+
+    <script>
+        // Chart Setup
+        const ctx = document.getElementById('oppoChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Distance', 'Our Love'],
+                datasets: [{
+                    label: 'Power Level',
+                    data: [2000, 1000000],
+                    backgroundColor: ['#1E1B4B', '#FB7185'],
+                    borderWidth: 3,
+                    borderColor: '#000'
+                }]
+            },
+            options: { responsive: true, plugins: { legend: { display: false } } }
+        });
+
+        // Voting Logic
+        function showVotingPage() {
+            document.getElementById('main-content').style.display = 'none';
+            document.getElementById('voting-page').style.display = 'block';
+            window.scrollTo(0,0);
+        }
+
+        function selectOption(el) {
+            el.classList.toggle('selected');
+        }
+
+        function submitVote() {
+            const selected = document.querySelectorAll('.selected');
+            if(selected.length < 1) {
+                alert("Please select at least one choice to cast your vote!");
+                return;
+            }
+            
+            document.getElementById('voting-page').style.display = 'none';
+            document.getElementById('victory-message').style.display = 'block';
+            
+            // Confetti Blast
+            var duration = 5 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+              return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+              var timeLeft = animationEnd - Date.now();
+              if (timeLeft <= 0) { return clearInterval(interval); }
+              var particleCount = 50 * (timeLeft / duration);
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        }
+    </script>
+</body>
+</html>
