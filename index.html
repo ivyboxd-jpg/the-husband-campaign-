@@ -33,7 +33,7 @@
             color: var(--midnight);
             overflow-x: hidden;
             background-image: var(--grain);
-            padding-top: 60px; /* Space for fixed header */
+            padding-top: 70px; 
             scroll-behavior: smooth;
         }
 
@@ -58,7 +58,7 @@
         .nav-links { display: flex; gap: 15px; }
         .nav-links a { color: var(--white); text-decoration: none; font-size: 0.75rem; text-transform: uppercase; font-weight: 700; }
 
-        /* HERO SECTION */
+        /* HERO SECTION - FIXED BADGE LAYOUT */
         #hero {
             min-height: 90vh;
             background: var(--emerald);
@@ -68,15 +68,21 @@
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
 
-        .hero-headline { font-size: clamp(3.5rem, 12vw, 10rem); }
+        .hero-headline { font-size: clamp(3.5rem, 12vw, 10rem); margin-bottom: 10px; }
+        
         .hero-badge {
-            background: var(--rose); color: var(--midnight);
-            padding: 10px 25px; font-size: clamp(1rem, 2.5vw, 2rem);
-            font-weight: 900; transform: rotate(-2deg);
-            margin-top: -10px; box-shadow: 6px 6px 0px var(--midnight);
+            background: var(--rose); 
+            color: var(--midnight);
+            padding: 12px 30px; 
+            font-size: clamp(0.9rem, 2vw, 1.8rem);
+            font-weight: 900; 
+            display: inline-block;
+            box-shadow: 6px 6px 0px var(--midnight);
+            margin-top: 20px;
+            letter-spacing: 1px;
         }
 
         /* SECTION STYLING */
@@ -90,13 +96,28 @@
         /* CARDS */
         .card { background: var(--white); padding: 30px; border: 3px solid var(--midnight); box-shadow: 10px 10px 0px var(--amber); }
 
-        /* OPPOSITION RESEARCH */
-        .opposition-box { background: #f1f1f1; border: 4px solid var(--midnight); padding: 30px; }
-        .red-stamp { color: var(--rose); border: 4px solid var(--rose); padding: 5px 15px; display: inline-block; transform: rotate(-10deg); font-weight: bold; margin-bottom: 10px; }
+        /* OPPOSITION RESEARCH - FIXED THREAT TAG */
+        .opposition-box { background: #f1f1f1; border: 4px solid var(--midnight); padding: 40px; position: relative; }
+        
+        .threat-tag { 
+            background: var(--rose);
+            color: var(--midnight);
+            font-family: 'Bebas Neue';
+            padding: 5px 15px;
+            font-size: 1.5rem;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            border: 2px solid var(--midnight);
+            transform: rotate(-2deg);
+        }
+
+        /* SVG ICON STYLING */
+        .icon-svg { width: 50px; height: 50px; fill: currentColor; margin-bottom: 15px; }
 
         /* VOLUNTEER SECTION */
         .volunteer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; }
-        .v-card { text-align: center; background: var(--midnight); color: var(--white); padding: 20px; }
+        .v-card { text-align: center; background: var(--midnight); color: var(--white); padding: 30px; border: 3px solid var(--amber); }
 
         /* VOTE PAGE STYLES */
         #voting-page { background: var(--amber); display: none; padding: 100px 5%; min-height: 100vh; }
@@ -109,14 +130,15 @@
             margin: 20px 0; padding: 15px; border: 2px solid var(--midnight);
             cursor: pointer; transition: 0.3s; font-weight: bold;
         }
-        .ballot-option:hover { background: var(--soft-rose); }
+        .ballot-option:hover { background: #ffdee3; }
         .ballot-option.selected { background: var(--emerald); color: white; }
 
         .vote-now-btn {
-            background: var(--amber); font-family: 'Bebas Neue';
+            background: var(--midnight); color: white; font-family: 'Bebas Neue';
             font-size: 2.5rem; padding: 20px 50px; border: none;
             cursor: pointer; box-shadow: 8px 8px 0px var(--rose);
         }
+        .vote-now-btn:hover { background: var(--rose); color: var(--midnight); }
 
         /* VICTORY MESSAGE */
         #victory-message { display: none; text-align: center; padding: 100px 5%; }
@@ -124,7 +146,7 @@
         footer { background: #000; color: #fff; padding: 40px; text-align: center; }
     </style>
 </head>
-<body>
+<body class="poster-texture">
 
     <nav>
         <div class="nav-logo">NIV FOR AARADHYA 2026</div>
@@ -142,7 +164,7 @@
         <section id="hero">
             <h1 class="hero-headline">A WOMAN WORTH<br>CAMPAIGNING FOR</h1>
             <div class="hero-badge">THE NIV-AARADHYA FUTURE | 8 MONTHS IN</div>
-            <p class="serif-italic" style="margin-top: 30px; font-size: 1.5rem;">"The Data is Clear: She is Everything."</p>
+            <p class="serif-italic" style="margin-top: 30px; font-size: 1.5rem;">"8 Months of Qualitative Excellence and Resilience."</p>
         </section>
 
         <!-- VISION -->
@@ -152,34 +174,34 @@
                 <div>
                     <h2 style="font-size: 3.5rem; margin-bottom: 20px;">The State of our Union</h2>
                     <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 20px;">
-                        Citizens, the first 8 months of this relationship have seen <strong>record-breaking happiness indices.</strong> Aaradhya's leadership in the fields of kindness, resilience, and witty coffee-fueled banter has made this the most successful administration in history.
+                        Citizens, our administration has seen record-high stability. Aaradhya's brilliance in the fields of <strong>Biological Science</strong> and her <strong>Witty Intelligence</strong> has made her the most qualified partner in the history of this relationship.
                     </p>
                     <p style="font-size: 1.1rem; line-height: 1.8;">
-                        We are running on a platform of <strong>Zero Regrets.</strong> While our opponents (the 2,000 miles) attempt to block our progress, we are moving forward with daily calls and a commitment to closing the distance permanently.
+                        Despite the distance, our "I Like You" infrastructure has transitioned successfully into a robust <strong>Love Economy</strong>. We are running on a platform of total devotion.
                     </p>
                 </div>
                 <div class="card" style="text-align: center;">
                     <h3 style="font-size: 2.5rem;">APPROVAL RATING</h3>
                     <h2 style="font-size: 8rem; color: var(--emerald);">100%</h2>
-                    <p style="font-weight: bold;">Margin of error: 0.0%</p>
+                    <p style="font-weight: bold;">(Data Source: Niv's Entire Soul)</p>
                 </div>
             </div>
         </section>
 
-        <!-- OPPOSITION RESEARCH (NEW) -->
+        <!-- OPPOSITION RESEARCH -->
         <section id="oppo" style="background: #eee;">
             <span class="section-tag">OPPOSITION RESEARCH</span>
-            <h2 style="font-size: 3rem; margin-bottom: 30px;">Know Thy Enemy: The Distance</h2>
+            <h2 style="font-size: 3rem; margin-bottom: 30px;">The Great Divide</h2>
             <div class="grid-2">
                 <div class="opposition-box">
-                    <div class="red-stamp">THREAT DETECTED</div>
-                    <h3>Target: 2,000+ Miles</h3>
+                    <div class="threat-tag">THREAT: 2083.14 KM</div>
+                    <h3>Current Obstacle: Geography</h3>
                     <ul style="margin-top: 15px; line-height: 2;">
-                        <li><strong>Weakness:</strong> Cannot stop a FaceTime call.</li>
-                        <li><strong>Weakness:</strong> Vulnerable to flight bookings.</li>
-                        <li><strong>Weakness:</strong> No match for her resilience.</li>
+                        <li><strong>Tactical Error:</strong> Distance assumes we will stop talking. We haven't.</li>
+                        <li><strong>Vulnerability:</strong> Distance cannot block FaceTime pixels.</li>
+                        <li><strong>Outcome:</strong> Geography is projected to lose by 2026.</li>
                     </ul>
-                    <p style="margin-top: 20px; font-style: italic;">"Geography tried to stop us. Geography is losing."</p>
+                    <p style="margin-top: 20px; font-style: italic;">"2083.14 kilometers is just a number. Our connection is a constant."</p>
                 </div>
                 <div>
                     <canvas id="oppoChart" height="200"></canvas>
@@ -190,113 +212,112 @@
         <!-- PLATFORM -->
         <section id="platform">
             <span class="section-tag">THE 2026 PLATFORM</span>
-            <h2 style="font-size: 3rem; margin-bottom: 30px;">Strategic Initiatives</h2>
+            <h2 style="font-size: 3rem; margin-bottom: 30px;">The Legislative Agenda</h2>
             <div class="volunteer-grid">
                 <div class="card">
-                    <h3>Lipstick Tutorial Support</h3>
-                    <p>National funding for step-by-step beauty routine consultations. "First this, then that."</p>
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,20A8,8 0 0,1 4,12A8,8 0 0,1 12,4A8,8 0 0,1 20,12A8,8 0 0,1 12,20M12,11A1,1 0 0,1 13,12A1,1 0 0,1 12,13A1,1 0 0,1 11,12A1,1 0 0,1 12,11M12,7A1,1 0 0,1 13,8A1,1 0 0,1 12,9A1,1 0 0,1 11,8A1,1 0 0,1 12,7M12,15A1,1 0 0,1 13,16A1,1 0 0,1 12,17A1,1 0 0,1 11,16A1,1 0 0,1 12,15Z" /></svg>
+                    <h3>Biology Passion Support</h3>
+                    <p>Ensuring 100% engagement and funding for academic discussions and scientific curiosity.</p>
                 </div>
                 <div class="card">
-                    <h3>Bio-Science Enthusiasm</h3>
-                    <p>A commitment to 110% engagement during all biology-related lectures and academic passions.</p>
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M20,12V22H4V12H2V10H22V12H20M18,12H6V20H18V12M12,2L14.85,5.21L18.83,6.25L16.29,9.33L16.63,13.36L13,11.83L9.37,13.36L9.71,9.33L7.17,6.25L11.15,5.21L12,2Z" /></svg>
+                    <h3>The Witty Intelligence Act</h3>
+                    <p>Recognizing and protecting her fast-talking, brilliant, and intelligent witty banter.</p>
                 </div>
                 <div class="card">
-                    <h3>Lorelai Gilmore Banter</h3>
-                    <p>Codifying fast-talking, coffee-addicted intelligence as a relationship requirement.</p>
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12.1,18.55L12,18.65L11.89,18.55C7.14,14.24 4,11.39 4,8.5C4,6.5 5.5,5 7.5,5C9.04,5 10.54,6 11.07,7.36H12.93C13.46,6 14.96,5 16.5,5C18.5,5 20,6.5 20,8.5C20,11.39 16.86,14.24 12.1,18.55M16.5,3C14.76,3 13.09,3.81 12,5.08C10.91,3.81 9.24,3 7.5,3C4.42,3 2,5.41 2,8.5C2,12.27 5.4,15.36 10.55,20.03L12,21.35L13.45,20.03C18.6,15.36 22,12.27 22,8.5C22,5.41 19.58,3 16.5,3Z" /></svg>
+                    <h3>The lipstick Tutorial Mandate</h3>
+                    <p>Full support for beauty routines. "First this, then that" as a matter of policy.</p>
                 </div>
             </div>
         </section>
 
-        <!-- VOLUNTEER (NEW) -->
+        <!-- VOLUNTEER -->
         <section id="volunteer">
             <span class="section-tag">VOLUNTEER HQ</span>
-            <h2 style="font-size: 3.5rem; margin-bottom: 30px;">How to Support the Campaign</h2>
+            <h2 style="font-size: 3.5rem; margin-bottom: 30px;">Get Involved</h2>
             <div class="volunteer-grid">
                 <div class="v-card">
-                    <h1 style="font-size: 3rem;">📞</h1>
-                    <h3>PHONE CANVASSING</h3>
-                    <p>Talking to Aaradhya for 4+ hours at a time.</p>
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z" /></svg>
+                    <h3>PHONE OUTREACH</h3>
+                    <p>Dedicating hours to call-based communication.</p>
                 </div>
                 <div class="v-card" style="background: var(--rose);">
-                    <h1 style="font-size: 3rem;">💬</h1>
-                    <h3>DIGITAL OUTREACH</h3>
-                    <p>Sending "I like you so much" texts every hour.</p>
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z" /></svg>
+                    <h3>AFFECTION CANVASSING</h3>
+                    <p>Messaging "I like you so much" on a recurring schedule.</p>
                 </div>
                 <div class="v-card" style="background: var(--amber); color: var(--midnight);">
-                    <h1 style="font-size: 3rem;">☕</h1>
-                    <h3>COFFEE LOGISTICS</h3>
-                    <p>Ensuring the candidate remains sufficiently caffeinated.</p>
+                    <svg class="icon-svg" viewBox="0 0 24 24"><path d="M2,21V19H20V21H2M20,8V5H18V8H20M20,3A2,2 0 0,1 22,5V8A2,2 0 0,1 20,10H18V13A4,4 0 0,1 14,17H8A4,4 0 0,1 4,13V3H20M16,5H6V13A2,2 0 0,0 8,15H14A2,2 0 0,0 16,13V5Z" /></svg>
+                    <h3>CAFFEINE LOGISTICS</h3>
+                    <p>Ensuring the candidate is fueled for intelligent witty banter.</p>
                 </div>
             </div>
         </section>
 
-        <!-- PRE-VOTE CTA -->
+        <!-- CTA -->
         <section style="text-align: center; background: var(--midnight); color: white;">
-            <h2 style="font-size: 4rem;">READY TO VOTE?</h2>
-            <p class="serif-italic" style="font-size: 1.5rem; margin-bottom: 30px;">Your voice matters. Her heart is the ballot.</p>
-            <button class="vote-now-btn" onclick="showVotingPage()">ACCESS OFFICIAL BALLOT</button>
+            <h2 style="font-size: 4rem;">VOTE FOR THE FUTURE</h2>
+            <p class="serif-italic" style="font-size: 1.5rem; margin-bottom: 30px;">"A Woman Worth Campaigning For. A Future Worth Everything."</p>
+            <button class="vote-now-btn" onclick="showVotingPage()">OPEN OFFICIAL BALLOT</button>
         </section>
 
         <footer>
             <p>NIV FOR AARADHYA 2026 | 8 MONTHS OF EXCELLENCE</p>
-            <p>© 2026 THE LONG-DISTANCE-TO-FOREVER PIPELINE.</p>
+            <p>© 2026 THE 2083.14 KM ERA IS ENDING.</p>
         </footer>
     </div>
 
-    <!-- VOTING PAGE (HIDDEN BY DEFAULT) -->
+    <!-- VOTING PAGE -->
     <div id="voting-page">
         <div class="ballot">
             <div style="text-align: center; border-bottom: 2px solid #000; margin-bottom: 20px; padding-bottom: 10px;">
-                <h1>OFFICIAL CAMPAIGN BALLOT</h1>
-                <p>ELECTION YEAR 2026 | CONSTITUENCY: OUR FUTURE</p>
+                <h1>OFFICIAL BALLOT: OUR FUTURE</h1>
+                <p>NIV-AARADHYA ADMINISTRATION | 2026</p>
             </div>
             
-            <p><strong>1. Who is the most kind, resilient, and beautiful woman worth campaigning for?</strong></p>
-            <div class="ballot-option" onclick="selectOption(this)">AARADHYA (The Only Logical Choice)</div>
+            <p><strong>1. Who is the most kind, resilient, and brilliant person in the union?</strong></p>
+            <div class="ballot-option" onclick="selectOption(this)">AARADHYA</div>
             
-            <p><strong>2. Should Niv be appointed as Husband for a term length of "Forever"?</strong></p>
-            <div class="ballot-option" onclick="selectOption(this)">YES (Highly Recommended)</div>
+            <p><strong>2. Should the current candidate (Niv) be awarded the title of Husband?</strong></p>
+            <div class="ballot-option" onclick="selectOption(this)">YES (PASSED BY ACCLAMATION)</div>
             
-            <p><strong>3. Priority level for closing the 2,000+ mile distance?</strong></p>
-            <div class="ballot-option" onclick="selectOption(this)">IMMEDIATE / TOP PRIORITY</div>
-
-            <p><strong>4. Will you accept these 8 months as just the beginning of our story?</strong></p>
-            <div class="ballot-option" onclick="selectOption(this)">I DO / YES</div>
+            <p><strong>3. Status of the 2083.14 KM Distance?</strong></p>
+            <div class="ballot-option" onclick="selectOption(this)">IRRELEVANT / TO BE REMOVED</div>
 
             <div style="text-align: center; margin-top: 30px;">
-                <button class="vote-now-btn" style="font-size: 1.5rem; width: 100%;" onclick="submitVote()">SUBMIT OFFICIAL BALLOT</button>
+                <button class="vote-now-btn" style="font-size: 1.5rem; width: 100%;" onclick="submitVote()">SUBMIT VOTE</button>
             </div>
         </div>
     </div>
 
-    <!-- VICTORY MESSAGE (HIDDEN) -->
+    <!-- VICTORY -->
     <div id="victory-message">
-        <h1 style="font-size: 6rem; color: var(--emerald);">LANDSLIDE VICTORY!</h1>
+        <h1 style="font-size: 6rem; color: var(--emerald);">A LANDSLIDE VICTORY!</h1>
         <div class="hero-badge" style="display: inline-block; transform: rotate(0deg); margin: 20px 0;">ELECTION CALLED: NIV WINS AARADHYA'S HEART</div>
-        <p class="serif-italic" style="font-size: 2rem; max-width: 800px; margin: 0 auto;">"Thank you for voting for us. Here's to 8 months, the next 8 years, and the forever we're building. I love you so much."</p>
+        <p class="serif-italic" style="font-size: 2rem; max-width: 800px; margin: 0 auto;">"Thank you for voting. 8 months was just the primary. The general election is forever. I love you."</p>
         <br>
-        <button class="vote-now-btn" onclick="location.reload()">BACK TO CAMPAIGN HQ</button>
+        <button class="vote-now-btn" onclick="location.reload()">RETURN TO HQ</button>
     </div>
 
     <script>
-        // Chart Setup
+        // Opposition Chart
         const ctx = document.getElementById('oppoChart').getContext('2d');
         new Chart(ctx, {
             type: 'bar',
             data: {
-                labels: ['Distance', 'Our Love'],
+                labels: ['2083.14 KM', 'OUR LOVE'],
                 datasets: [{
-                    label: 'Power Level',
-                    data: [2000, 1000000],
+                    label: 'Magnitude',
+                    data: [2083, 1000000],
                     backgroundColor: ['#1E1B4B', '#FB7185'],
-                    borderWidth: 3,
+                    borderWidth: 2,
                     borderColor: '#000'
                 }]
             },
             options: { responsive: true, plugins: { legend: { display: false } } }
         });
 
-        // Voting Logic
         function showVotingPage() {
             document.getElementById('main-content').style.display = 'none';
             document.getElementById('voting-page').style.display = 'block';
@@ -308,24 +329,17 @@
         }
 
         function submitVote() {
-            const selected = document.querySelectorAll('.selected');
-            if(selected.length < 1) {
-                alert("Please select at least one choice to cast your vote!");
+            if(document.querySelectorAll('.selected').length < 1) {
+                alert("Please select at least one mandate!");
                 return;
             }
-            
             document.getElementById('voting-page').style.display = 'none';
             document.getElementById('victory-message').style.display = 'block';
             
-            // Confetti Blast
             var duration = 5 * 1000;
             var animationEnd = Date.now() + duration;
             var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
-
-            function randomInRange(min, max) {
-              return Math.random() * (max - min) + min;
-            }
-
+            function randomInRange(min, max) { return Math.random() * (max - min) + min; }
             var interval = setInterval(function() {
               var timeLeft = animationEnd - Date.now();
               if (timeLeft <= 0) { return clearInterval(interval); }
